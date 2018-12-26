@@ -25,10 +25,6 @@ class ViewController: UIViewController {
         self.client = DarkSkyClient(apiKey: "0b188dfa3767c06bf8cb355510c05ef8")
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     private func makeRequest()
     {
         if (!(self.textField.text?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).isEmpty)!) {
@@ -65,4 +61,18 @@ class ViewController: UIViewController {
         makeRequest()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
+    }
+    
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
 }
