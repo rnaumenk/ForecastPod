@@ -1,0 +1,6 @@
+framework module RecastAI {
+  umbrella header "RecastAI-umbrella.h"
+
+  export *
+  module * { export * }
+}
